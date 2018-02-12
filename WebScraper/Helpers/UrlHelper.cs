@@ -3,8 +3,16 @@ using System.Net;
 
 namespace WebScraper.Helpers
 {
+    /// <summary>
+    /// Helper class for URLs.
+    /// </summary>
     public class UrlHelper
     {
+        /// <summary>
+        /// Build wiki URL with provided uri.
+        /// </summary>
+        /// <param name="uri">Uri.</param>
+        /// <returns>A full wiki web url with scheme, host and path.</returns>
         public static string GetWikiUrl(string uri)
         {
             var uriBuilder = new UriBuilder

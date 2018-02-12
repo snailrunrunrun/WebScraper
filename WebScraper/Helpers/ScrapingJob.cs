@@ -13,24 +13,39 @@ namespace WebScraper.Helpers
 {
     /// <inheritdoc />
     /// <summary>
+    /// The scraping job is defined in this class.
     /// </summary>
     public class ScrapingJob : IJob
     {
+        /// <summary>
+        /// Keep a private in-memory index of the scraped results.
+        /// </summary>
         private static ConcurrentDictionary<string, string> resultsDic = new ConcurrentDictionary<string, string>();
+
+        /// <summary>
+        /// Keep a private in-memory list of what jobs are currently on the schedule.
+        /// </summary>
         private static ConcurrentDictionary<string, string> scheduledTasks = new ConcurrentDictionary<string, string>();
 
+        /// <summary>
+        /// Getter and setter for resultsDisc.
+        /// </summary>
         public static ConcurrentDictionary<string, string> ResultsDic
         {
             get => resultsDic;
             set => resultsDic = value;
         }
 
+        /// <summary>
+        /// Getter and setter for scheduledTasks.
+        /// </summary>
         public static ConcurrentDictionary<string, string> ScheduledTasks
         {
             get => scheduledTasks;
             set => scheduledTasks = value;
         }
 
+        /// <inheritdoc />
         public Task Execute(IJobExecutionContext context)
         {
             var dataMap = context.JobDetail.JobDataMap;
@@ -47,6 +62,11 @@ namespace WebScraper.Helpers
             return Task.Delay(0);
         }
         
+        /// <summary>
+        /// Serialize scraped results into Json and write to .json file.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private static string WriteToJson(V1WikipicsUriTagGetOKResponseContent result)
         {
             var guidString = Guid.NewGuid().ToString();
@@ -56,6 +76,12 @@ namespace WebScraper.Helpers
             return guidString;
         }
 
+        /// <summary>
+        /// Scrape for provided uri and html tag.
+        /// </summary>
+        /// <param name="uri">Uri.</param>
+        /// <param name="tag">Html tag.</param>
+        /// <returns>Response content.</returns>
         public static V1WikipicsUriTagGetOKResponseContent ScrapForResults(string uri, string tag)
         {
             var web = new HtmlWeb();

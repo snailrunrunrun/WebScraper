@@ -80,9 +80,9 @@ namespace WebScraper.ScraperApi
         /// <summary>
         /// Schedule a scrapping job.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="uri"></param>
-        /// <param name="tag"></param>
+        /// <param name="url">Full wiki url.</param>
+        /// <param name="uri">User specified uri.</param>
+        /// <param name="tag">Html tag.</param>
         /// <returns></returns>
         private static async Task ScheduleScrapingTaskAsync(string url, string uri, string tag)
         {
