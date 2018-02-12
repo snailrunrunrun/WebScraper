@@ -34,9 +34,16 @@ namespace WebScraper.Helpers
         {
             var myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            using (var myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse())
+            try
             {
-                return myHttpWebResponse.StatusCode == HttpStatusCode.OK;
+                using (var myHttpWebResponse = (HttpWebResponse) myHttpWebRequest.GetResponse())
+                {
+                    return myHttpWebResponse.StatusCode == HttpStatusCode.OK;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

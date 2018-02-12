@@ -30,5 +30,13 @@ namespace WebScrapper.Tests
 
             Assert.IsNotNull(result.Images);
         }
+
+        [TestMethod]
+        public void TestIsValidUrl()
+        {
+            var isValid = UrlHelper.IsValidUrl(@"https://en.wikipedia.org/wiki/The_Great_Wall_of_China/a");
+
+            Assert.IsFalse(isValid);
+        }
     }
 }
