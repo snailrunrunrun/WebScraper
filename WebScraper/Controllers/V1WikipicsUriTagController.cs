@@ -42,7 +42,7 @@ namespace WebScraper.ScraperApi
             // hash uri + tag
             var uriTag = string.Concat(uri, "-", tag);
 
-            if (ScrappingJob.ScheduledTasks.ContainsKey(uriTag))
+            if (ScrapingJob.ScheduledTasks.ContainsKey(uriTag))
             {
                 return Content(HttpStatusCode.Accepted, new V1WikipicsUriTagGetAcceptedResponseContent
                 {
@@ -50,9 +50,9 @@ namespace WebScraper.ScraperApi
                 });
             }
 
-            if (ScrappingJob.ResultsDic.ContainsKey(uriTag))
+            if (ScrapingJob.ResultsDic.ContainsKey(uriTag))
             {
-                var fileGuid = ScrappingJob.ResultsDic[uriTag];
+                var fileGuid = ScrapingJob.ResultsDic[uriTag];
                 var filePath = FileHelper.GetFilePath(fileGuid);
                 var responseContent = FileHelper.FetchResultsFromFile(filePath);
                 result.V1WikipicsUriTagGetOKResponseContent = responseContent;
@@ -61,7 +61,7 @@ namespace WebScraper.ScraperApi
             
             if (UrlHelper.IsValidUrl(wikiUrl))
             {
-                ScrappingJob.ScheduledTasks.TryAdd(uriTag, "");
+                ScrapingJob.ScheduledTasks.TryAdd(uriTag, "");
 
                 Task.Run( () => ScheduleScrapingTaskAsync(wikiUrl, uri, tag) );
                 
@@ -98,7 +98,7 @@ namespace WebScraper.ScraperApi
             await sched.Start();
 
             // define the job and tie it to our ScrappingJob class
-            var job = JobBuilder.Create<ScrappingJob>()
+            var job = JobBuilder.Create<ScrapingJob>()
                 .WithIdentity("myJob", "group1")
                 .UsingJobData("url", url)
                 .UsingJobData("tag", tag)
