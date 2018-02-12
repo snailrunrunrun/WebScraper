@@ -26,7 +26,7 @@ namespace WebScrapper.Tests
         [TestMethod]
         public void TestScrapForResults()
         {
-            var result = ScrappingJob.ScrapForResults(@"https://en.wikipedia.org/wiki/Terracotta_Army", "a");
+            var result = ScrapingJob.ScrapForResults(@"https://en.wikipedia.org/wiki/Terracotta_Army", "a");
 
             Assert.IsNotNull(result.Images);
         }
