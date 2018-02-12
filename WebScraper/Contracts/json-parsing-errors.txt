@@ -1,0 +1,18 @@
+-------Saturday, February 10, 2018 11:11:50 PM-------
+/v1/wikipics/{uri}/{tag}-getAcceptedResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+/v1/wikipics/{uri}/{tag}-getBadRequestResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+-------Saturday, February 10, 2018 11:59:04 PM-------
+/v1/wikipics/{uri}/{tag}-getAcceptedResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+/v1/wikipics/{uri}/{tag}-getBadRequestResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+-------Sunday, February 11, 2018 12:00:54 AM-------
+/v1/wikipics/{uri}/{tag}-getAcceptedResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+/v1/wikipics/{uri}/{tag}-getBadRequestResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+
+-------Sunday, February 11, 2018 12:02:46 AM-------
+/v1/wikipics/{uri}/{tag}-getAcceptedResponseContent: Could not parse JSON Schema. v3 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 2.. v4 parser message: After parsing a value an unexpected character was encountered: ". Path 'default', line 6, position 3.
+

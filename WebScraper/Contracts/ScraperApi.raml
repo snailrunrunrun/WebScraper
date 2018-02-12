@@ -1,0 +1,123 @@
+#%RAML 0.8
+title: api
+baseUri: https://localhost:64483/scraperapi/
+mediaType: application/json
+
+/v1/wikipics/{uri}/{tag}:
+  uriParameters:
+      uri: 
+        type: string
+        required: true
+        description: Wiki url.
+        example: "https://en.wikipedia.org/wiki/Terracotta_Army"
+      tag:
+        type: string
+        required: true
+        description: A valid html tag (case-insensative).
+        example: "a"   
+  get:
+    description: Scrape provided web url and html tag and return resutls.
+    responses:
+      200:       
+        headers:
+          Content-Type:
+            required: true
+            type: string
+            description: Content type.
+            example: "application/json; charset=utf8" 
+        body:
+          application/json:
+            schema: |
+              {
+                "type": "object",
+                "$schema": "http://json-schema.org/draft-06/schema#",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Terracotta Army"
+                    ]
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "https://en.wikipedia.org/wiki/File:Terracotta_Army,_View_of_Pit_1.jpg",
+                        "https://en.wikipedia.org/wiki/File:Terracotta_Army-China2.jpg"
+                      ]
+                    }
+                  },
+                  "datetimeUTC": {
+                    "type": "string",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "2012-03-19T07:22Z"
+                    ]
+                  }
+                }
+              }
+            example: |
+              {
+                "title": "Terracotta Army",
+                "images": [
+                  "https://en.wikipedia.org/wiki/File:Terracotta_Army,_View_of_Pit_1.jpg",
+                  "https://en.wikipedia.org/wiki/File:Terracotta_Army-China2.jpg",
+                  "https://en.wikipedia.org/wiki/File:Soldier_Horse.JPG"
+                ],
+                "datetimeUTC": "2012-03-19T07:22Z"
+              }
+        description: Return scraping results for provided url and html tag combination.
+      202:
+        headers:
+          Content-Type:
+            required: true
+            type: string
+            description: Content type.
+            example: "application/json; charset=utf8"
+        body:
+          application/json:
+            schema: |
+              { 
+                "$schema": "http://json-schema.org/draft-03/schema",
+                "type": "object",
+                "description": "Respond to api caller with messages",
+                "default": "Scaping job is scheduled. Please try again later.",
+                "properties": {
+                "Status": { "type": "string"}
+                }
+              }
+            example: |
+              {
+                "Status": "Scaping job is scheduled. Please try again later."
+              }
+        description: Scraping task for requested wiki url and tag is already scheduled. Results are not available yet.
+      400:
+        headers:
+          Content-Type:
+            required: true
+            type: string
+            description: Content type.
+            example: "application/json; charset=utf8"
+        body:
+          application/json: 
+            schema: |
+              { 
+                "$schema": "http://json-schema.org/draft-03/schema",
+                "type": "object",
+                "description": "Respond to api caller with messages",
+                "default": "Invalid wiki url.",
+                "properties": {
+                "Status": { "type": "string"}
+                }
+              }
+            example: |
+              {
+                "Status": "Invalid wiki url."
+              }
+        description: Provided url or url to scrape is not valid.
