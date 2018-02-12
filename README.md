@@ -19,18 +19,22 @@ Host: localhost:64483
 ```
 
 Responses
+
+`202 Accepted`
 ```json
 {
     "Status": "A new scrapping task is scheduled."
 }
 ```
 
+`202 Accepted`
 ```json
 {
     "Status": "Results not available yet. Please try again later."
 }
 ```
 
+`200 OK`
 ```json
 {
     "title": "Terracotta Army",
@@ -57,5 +61,20 @@ Responses
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Terracotta_color_2.jpg/225px-Terracotta_color_2.jpg"
     ],
     "datetimeUTC": "2018-02-12T19:47:25.6130000Z"
+}
+```
+
+Request
+```shell
+GET /v1/wikipics/xdfd/a HTTP/1.1
+Host: localhost:64483
+```
+
+Response 
+
+`400 Bad Request`
+```json
+{
+    "Status": "Bad url."
 }
 ```
